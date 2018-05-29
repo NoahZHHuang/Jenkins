@@ -3,7 +3,7 @@
 
 	<groupId>com.noah</groupId>
 	<artifactId>jenkins_learning</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>jenkins_learning</name>
@@ -113,7 +113,7 @@
 		<connection>scm:git:ssh://git@github.com/NoahZHHuang/Jenkins.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/NoahZHHuang/Jenkins.git</developerConnection>
 		<url>https://github.com/NoahZHHuang/Jenkins</url>
-		<tag>HEAD</tag>
+		<tag>jenkins_learning-0.0.1</tag>
 	</scm>
 	
 	<distributionManagement>
