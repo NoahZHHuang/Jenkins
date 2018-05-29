@@ -1,0 +1,135 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.noah</groupId>
+	<artifactId>jenkins_learning</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>jenkins_learning</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jetty.version>9.2.5.v20141112</jetty.version>
+		<jersey.version>2.7</jersey.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- embedded jetty relevant -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+
+		<!-- jax-rs(jersey) relevant -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		
+		<!-- JSON relevant -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	   <plugins>
+	     <plugin>
+	       <artifactId>maven-compiler-plugin</artifactId>
+	       <configuration>
+	         <source>1.8</source>
+	         <target>1.8</target>
+	       </configuration>
+	     </plugin>
+	     <plugin>
+	     	<groupId>org.apache.maven.plugins</groupId>
+	     	<artifactId>maven-shade-plugin</artifactId>
+	     	<version>3.1.0</version>
+	     	<executions>
+	     		<execution>
+	     			<phase>package</phase>
+	     			<goals>
+	     				<goal>shade</goal>
+	     			</goals>
+	     			<configuration>
+	     				<transformers>
+	     					<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+	     						<manifestEntries>
+	     							<Main-Class>com.noah.jenkins_learning.JettyServer</Main-Class>
+	     							<Implementation-Version>${project.version}</Implementation-Version>
+	     						</manifestEntries>
+	     					</transformer>
+	     				</transformers>
+	     			</configuration>
+	     		</execution>
+	     	</executions>
+	     </plugin>
+	     <plugin>
+	     	<groupId>org.apache.maven.plugins</groupId>
+	     	<artifactId>maven-scm-plugin</artifactId>
+	     	<version>1.9.1</version>
+	     </plugin>
+	     <plugin>
+	     	<groupId>org.apache.maven.plugins</groupId>
+	     	<artifactId>maven-release-plugin</artifactId>
+	     	<version>2.5.1</version>
+	     	<configuration>
+	     		<localCheckout>true</localCheckout>
+	     		<pushChanges>true</pushChanges>
+	     	</configuration>
+	     </plugin>
+	   </plugins>
+	</build>
+	
+	<scm>
+		<connection>scm:git:ssh://git@github.com:NoahZHHuang/Jenkins.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:NoahZHHuang/Jenkins.git</developerConnection>
+		<url>https://github.com/NoahZHHuang/Jenkins</url>
+		<tag>HEAD</tag>
+	</scm>
+	
+	<distributionManagement>
+		<repository>
+			<id>nexus.releases</id>
+			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus.snapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+</project>
