@@ -110,8 +110,8 @@
 	</build>
 	
 	<scm>
-		<connection>scm:git:ssh://git@github.com:NoahZHHuang/Jenkins.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:NoahZHHuang/Jenkins.git</developerConnection>
+		<connection>scm:git:ssh://git@github.com/NoahZHHuang/Jenkins.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/NoahZHHuang/Jenkins.git</developerConnection>
 		<url>https://github.com/NoahZHHuang/Jenkins</url>
 		<tag>jenkins_learning-0.0.1</tag>
 	</scm>
