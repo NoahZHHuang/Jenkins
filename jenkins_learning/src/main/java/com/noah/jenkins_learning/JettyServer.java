@@ -26,6 +26,7 @@ public class JettyServer
 		server.start();
 		
 		System.out.println("Jetty Server Stat Up Successfully !!!");
+		System.out.println("Please access http://localhost:9999/health ");
 	}
 	
 	public static void stop() throws Exception{
